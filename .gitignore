@@ -1,0 +1,9 @@
+target/
+data/
+.tools/
+.ppt-work/
+*.mv.db
+*.trace.db
+.idea/
+.vscode/
+*.iml
