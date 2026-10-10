@@ -2,22 +2,26 @@
 
 A Java 21 web application for managing a small library. It uses embedded Tomcat, Jakarta Servlets, JDBC, and an embedded H2 database. The database file is created automatically on first launch; no separate database server is needed.
 
-## Requirements
+## Run on your computer
 
-- JDK 21 or newer
-- Apache Maven 3.9 or newer
-
-## Run locally
+Each teammate runs a separate local copy of Book Haven. Install **JDK 21 or newer** and **Apache Maven 3.9 or newer**, then clone this repository. On Windows, double-click `run-book-haven.bat`. On macOS or Linux, run:
 
 ```bash
-mvn clean compile exec:java
+chmod +x run-book-haven.sh
+./run-book-haven.sh
 ```
 
-Open [http://localhost:8080](http://localhost:8080). Stop the server with Ctrl+C. The application creates `data/bookhaven-library.mv.db` on first launch and inserts starter catalog data. The database is intentionally ignored by Git.
+The first start needs an internet connection so Maven can download the Java libraries. When the terminal says the app is running, open [http://localhost:8080](http://localhost:8080) on that same computer. Keep the terminal open while using the site, and press Ctrl+C to stop it. The database is created at `data/bookhaven-library.mv.db` on first launch and stays on that computer. Git ignores the database so each teammate has their own data.
+
+If the page says `ERR_CONNECTION_REFUSED`, start the app with the script above and reload the page. If port 8080 is already in use, stop the other app using that port before starting Book Haven.
 
 ## Website link
 
-Open `Open Book Haven.url` in the project folder for the direct local website link. See [docs/WEBSITE_LINK.md](docs/WEBSITE_LINK.md) for startup instructions and notes about sharing a public link with reviewers.
+Open `Open Book Haven.url` in the project folder for the direct local website link. `localhost` works only on the computer running the app. See [docs/WEBSITE_LINK.md](docs/WEBSITE_LINK.md) for local startup and public hosting notes.
+
+## Public demo deployment
+
+The app includes a Dockerfile and a Render Blueprint for hosting as a Java web service with a Neon PostgreSQL database. The free host can sleep while idle, while Neon stores the shared library records. See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) for setup, free-plan limits and public demo access notes.
 
 ## Project map
 

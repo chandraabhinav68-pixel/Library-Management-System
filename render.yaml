@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: book-haven-library
+    runtime: docker
+    plan: free
+    healthCheckPath: /api/dashboard
+    envVars:
+      - key: BOOKHAVEN_DB_URL
+        sync: false
+      - key: BOOKHAVEN_DB_USER
+        sync: false
+      - key: BOOKHAVEN_DB_PASSWORD
+        sync: false

@@ -18,7 +18,8 @@ public final class LibraryApplication {
         var library=new LibraryService(new JdbcBookRepository(),new JdbcMemberRepository(),new JdbcLoanRepository());
         ApiServlet.library=library;
         var overdueScan=new OverdueScanService(library);
-        Tomcat tomcat=new Tomcat();tomcat.setPort(Integer.getInteger("port",8080));tomcat.getConnector();
+        int port=Integer.getInteger("port",Integer.parseInt(System.getenv().getOrDefault("PORT","8080")));
+        Tomcat tomcat=new Tomcat();tomcat.setPort(port);tomcat.getConnector();
         File webRoot=new File("src/main/webapp").getAbsoluteFile();Context context=tomcat.addContext("",webRoot.getPath());
         context.setParentClassLoader(LibraryApplication.class.getClassLoader());
         context.addWelcomeFile("index.html");
